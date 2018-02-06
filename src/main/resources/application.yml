@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  profiles: local
+
+logging:
+  level:
+    root: info
+    jdbc.connection: error
+    jdbc.audit: error
+    jdbc.resultset: error
+
+
+config:
+  datasource:
+    jndiName: java:comp/env/jdbc/ucsJNDI
+    typeAliasesPackage: io.dhseong
+    configLoacation: classpath:config/mybatis-config.xml
+    mapperLocation: classpath*:mapper/**/*Mapper.xml
+
+---
+spring:
+  profiles: development
+
+logging:
+  level:
+    root: info
+
+config:
+  datasource:
+    jndiName: java:comp/env/jdbc/ucsJNDI
+    typeAliasesPackage: io.dhseong
+    configLoacation: classpath:config/mybatis-config.xml
+    mapperLocation: classpath*:mapper/**/*Mapper.xml
