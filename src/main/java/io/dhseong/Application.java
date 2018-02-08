@@ -11,18 +11,18 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return super.configure(builder);
-	}
+public class Application /*extends SpringBootServletInitializer*/ {
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//		return super.configure(builder);
+//	}
 
 	public static void main(String[] args) {
-		//SpringApplication.run(Application.class, args);
-		configureApplication(new SpringApplicationBuilder()).run(args);
+		SpringApplication.run(Application.class, args);
+//		configureApplication(new SpringApplicationBuilder()).run(args);
 	}
 
-	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
-		return builder.sources(Application.class).bannerMode(Banner.Mode.OFF);
-	}
+//	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
+//		return builder.sources(Application.class).bannerMode(Banner.Mode.OFF);
+//	}
 }

@@ -38,23 +38,28 @@ public class LocalDatabaseConfig {
     @Autowired
     private ApplicationContext context;
 
-    @Value("${config.datasource.typeAliasesPackage}")
-    String typeAliasesPackage;
-
     @Value("${config.datasource.configLoacation}")
     String configLoacation;
 
     @Value("${config.datasource.mapperLocation}")
     String mapperLocation;
 
+    @Value("${config.datasource.url}")
+    String url;
+
+    @Value("${config.datasource.username}")
+    String username;
+
+    @Value("${config.datasource.password}")
+    String password;
 
     @Bean(name = "dataSource")
     public DataSource log4jdbcProxyDataSource(){
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(OracleDriver.class);
-        dataSource.setUrl("jdbc:oracle:thin:@220.76.203.39:1521:UCS");
-        dataSource.setUsername("UCS_FRAME");
-        dataSource.setPassword("qazxsw");
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
 
         Log4jdbcProxyDataSource jdbcProxyDataSource = new Log4jdbcProxyDataSource(dataSource);
         Log4JdbcCustomFormatter log4JdbcCustomFormatter = new Log4JdbcCustomFormatter();
@@ -70,7 +75,6 @@ public class LocalDatabaseConfig {
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource datasource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(datasource);
-        sqlSessionFactoryBean.setTypeAliasesPackage(typeAliasesPackage);
         sqlSessionFactoryBean.setConfigLocation(context.getResource(configLoacation));
         sqlSessionFactoryBean.setMapperLocations(context.getResources(mapperLocation));
 

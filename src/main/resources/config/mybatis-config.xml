@@ -24,9 +24,9 @@
 <!-- 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/> -->
 
 	</settings>
-	
+
 	<typeAliases>
-		<package name="kr.pe.sdh"/>
+		<package name="io.dhseong"/>
 	</typeAliases>
 
 	<typeHandlers>

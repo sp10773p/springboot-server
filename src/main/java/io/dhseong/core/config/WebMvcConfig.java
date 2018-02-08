@@ -1,12 +1,10 @@
 package io.dhseong.core.config;
 
-import io.dhseong.core.config.converter.AjaxGsonMessageConverter;
 import io.dhseong.core.config.interceptor.CommonInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,27 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new AjaxGsonMessageConverter());
+        GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
+        converters.add(gsonHttpMessageConverter);
+    }
+
+    /*@Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("redirect:/extjs/index.html");
+    }*/
+
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String[] RESOURCE_LOCATIONS = {
+                "classpath:/extjs/",
+                "classpath:/mapper/",
+                "classpath:/META-INF/resources/",
+                "classpath:/resources/"};
+
+        if (!registry.hasMappingForPattern("/**")) {
+            registry.addResourceHandler("/**").addResourceLocations(
+                    RESOURCE_LOCATIONS);
+        }
     }
 }

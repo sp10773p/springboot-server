@@ -2,24 +2,37 @@ spring:
   profiles:
     active: local
 
----
-spring:
-  profiles: local
-
-logging:
-  level:
-    root: info
-    jdbc.connection: error
-    jdbc.audit: error
-    jdbc.resultset: error
+server:
+  port: 8999
 
 
 config:
   datasource:
     jndiName: java:comp/env/jdbc/ucsJNDI
-    typeAliasesPackage: io.dhseong
     configLoacation: classpath:config/mybatis-config.xml
     mapperLocation: classpath*:mapper/**/*Mapper.xml
+
+---
+spring:
+  profiles: local
+  devtools:
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    jdbc.connection: error
+    jdbc.audit: error
+    jdbc.resultset: error
+    io.dhseong: debug
+
+config:
+  datasource:
+    url: jdbc:oracle:thin:@220.76.203.39:1521:UCS
+    username: UCS_FRAME
+    password: qazxsw
 
 ---
 spring:
@@ -28,10 +41,14 @@ spring:
 logging:
   level:
     root: info
+    org.springframework.web: debug
+    jdbc.connection: error
+    jdbc.audit: error
+    jdbc.resultset: error
+    io.dhseong: debug
 
 config:
   datasource:
-    jndiName: java:comp/env/jdbc/ucsJNDI
-    typeAliasesPackage: io.dhseong
-    configLoacation: classpath:config/mybatis-config.xml
-    mapperLocation: classpath*:mapper/**/*Mapper.xml
+    url: jdbc:oracle:thin:@220.76.203.39:1521:UCS
+    username: UCS_FRAME
+    password: qazxsw
