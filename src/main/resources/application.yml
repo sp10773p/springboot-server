@@ -6,6 +6,7 @@ server:
   port: 8999
 
 
+
 config:
   datasource:
     jndiName: java:comp/env/jdbc/ucsJNDI
@@ -22,7 +23,7 @@ spring:
 logging:
   level:
     root: info
-    org.springframework.web: debug
+#    org.springframework.web: debug
     jdbc.connection: error
     jdbc.audit: error
     jdbc.resultset: error

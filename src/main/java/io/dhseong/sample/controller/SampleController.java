@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,17 +79,55 @@ public class SampleController {
     @ResponseBody
     public AjaxModel showUser(@RequestBody AjaxModel params){
         logger.debug("params : {}", params);
-//        logger.debug("userId : {}", request.getParameter("userId") );
         AjaxModel ajaxModel = new AjaxModel();
 
         ajaxModel.setStatus(0);
 
         Map<String, Object> data = new HashMap<>();
         data.put("nickName", "레이서");
+        data.put("password", "1234");
+        data.put("email", "sp10773p@gmail.com");
+        ajaxModel.setData(data);
+
+        return ajaxModel;
+    }
+
+
+    @RequestMapping(value = "/sample/userReg")
+    @ResponseBody
+    public AjaxModel userReg(@RequestBody AjaxModel params){
+        logger.debug("params : {}", params);
+        AjaxModel ajaxModel = new AjaxModel();
+
+        ajaxModel.setStatus(0);
+        ajaxModel.setMsg("성공");
+
+        return ajaxModel;
+    }
+
+
+    @RequestMapping(value = "/sample/userData")
+    public AjaxModel userData(HttpServletRequest request){
+        AjaxModel ajaxModel = new AjaxModel();
+
+        ajaxModel.setStatus(0);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("userId", "sp10773p");
+        data.put("password", "1234");
+        data.put("nickName", "레이서");
         data.put("email", "sp10773p@gmail.com");
 
         ajaxModel.setData(data);
 
         return ajaxModel;
+    }
+
+    private void printRequestParams(HttpServletRequest request) {
+        Enumeration e = request.getParameterNames();
+        while (e.hasMoreElements()) {
+            String key = (String) e.nextElement();
+            System.out.println(key + "::" + request.getParameter(key));
+        }
     }
 }
