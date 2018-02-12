@@ -30,5 +30,8 @@ public class AjaxModel {
     private String msg  = "";
 
     @Getter @Setter
+    private String success  = "";
+
+    @Getter @Setter
     private UserSessionModel userSessionModel;
 }

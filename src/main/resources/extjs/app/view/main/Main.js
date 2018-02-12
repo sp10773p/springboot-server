@@ -8,7 +8,8 @@ Ext.define('extjs.view.main.Main',{
         'extjs.view.menu.LeftMenu',
         'extjs.view.user.UserShow',
         'extjs.view.user.UserReg',
-        'extjs.view.user.UserUpd'
+        'extjs.view.user.UserUpd',
+        'extjs.view.user.UserShowList'
     ],
     xtype: 'main',
     controller: 'main',
@@ -34,13 +35,15 @@ Ext.define('extjs.view.main.Main',{
         region: 'center',
         xtype: 'tabpanel',
         name: 'mainbar',
-        items: [{
+        items: [/*{
             xtype: 'usershow'
         },{
             xtype: 'userreg'
         },{
             xtype: 'userupd'
-        }]
+        },{
+            xtype: 'usershowlist'
+        }*/]
     },{
         region: 'south',
         border: true,

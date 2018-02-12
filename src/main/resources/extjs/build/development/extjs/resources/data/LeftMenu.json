@@ -20,10 +20,6 @@
         name: "사용자변경",
         url: "extjs.view.user.UserUpd",
         leaf: true,
-      },{
-        name: "버퍼드 그리드",
-        url: "extjs.view.grid.BufferedRenderer",
-        leaf: true,
       }]
     },{
       name: "메뉴",

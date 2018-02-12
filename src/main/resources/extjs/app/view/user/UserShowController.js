@@ -40,5 +40,10 @@ Ext.define('extjs.view.user.UserShowController', {
                 Ext.Msg.alert('오류', '시스템 장애입니다.');
             }
         })
+    },
+    calledByOther: function (params) {
+        var searchSubjectId = this.lookupReference('userId');
+        searchSubjectId.setValue(params.userId);
+        this.onSearch();
     }
 });

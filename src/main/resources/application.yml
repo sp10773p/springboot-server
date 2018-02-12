@@ -1,6 +1,9 @@
 spring:
   profiles:
     active: local
+  devtools:
+    restart:
+      exclude: extjs/**,,static/**
 
 server:
   port: 8999

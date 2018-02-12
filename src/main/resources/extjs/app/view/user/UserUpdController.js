@@ -30,12 +30,12 @@ Ext.define('extjs.view.user.UserUpdController', {
             success: function (res) {
                 var obj = Ext.JSON.decode(res.responseText);
                 if(obj.status == 0){
+                    me.getViewModel().setData(obj.data);
+                    // me.getViewModel().set('nickName', obj.data.nickName);
+                    // me.getViewModel().set('password', obj.data.password);
+                    // me.getViewModel().set('email', obj.data.email);
 
-                    me.getViewModel().set('nickName', obj.data.nickName);
-                    me.getViewModel().set('password', obj.data.password);
-                    me.getViewModel().set('email', obj.data.email);
-
-                    console.log(me.getView().getForm().get('button1'));
+                    // console.log(me.getView().getForm().get('button1'));
 
                     Ext.Msg.alert("확인", "조회완료!");
                 }else{
@@ -51,11 +51,11 @@ Ext.define('extjs.view.user.UserUpdController', {
         var me = this;
         var params = this.getViewModel().getData();
         Ext.Ajax.request({
-            url: '/sample/userReg',
+            url: '/sample/userUpd',
             headers: {
                 'Content-Type' : 'application/json;charset=UTF-8'
             },
-            params: JSON.stringify(params),
+            params: JSON.stringify({data: params}),
             success: function (res) {
                 var obj = Ext.JSON.decode(res.responseText);
                 if(obj.status == 0){

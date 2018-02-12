@@ -53,5 +53,13 @@ Ext.define('extjs.view.user.UserRegController',{
     },
     onReset: function () {
         this.getView().getForm().reset();
+    },
+    onShowDuplicate: function () {
+        var pop = Ext.create('extjs.view.user.UserDuplicate');
+        pop.show();
+        pop.getController().calledByOther(this);
+    },
+    callbackPopup: function (param) {
+        this.lookupReference('userId').setValue(param);
     }
 })

@@ -15,6 +15,10 @@ Ext.define('extjs.Application', {
         }
     },
 
+    controller: [
+        'MemberController'
+    ],
+
     stores: [
         // TODO: add global / shared stores here
     ],

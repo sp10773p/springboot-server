@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author dong hun Seong
@@ -105,6 +103,80 @@ public class SampleController {
         return ajaxModel;
     }
 
+
+
+    @RequestMapping(value = "/sample/userUpd")
+    @ResponseBody
+    public AjaxModel userUpd(@RequestBody AjaxModel params){
+        logger.debug("params : {}", params);
+        AjaxModel ajaxModel = new AjaxModel();
+
+        ajaxModel.setStatus(0);
+        ajaxModel.setMsg("변경성공");
+
+        return ajaxModel;
+    }
+
+
+    @RequestMapping(value = "/sample/userShowList")
+    public AjaxModel userShowList(HttpServletRequest request){
+        AjaxModel ajaxModel = new AjaxModel();
+
+        ajaxModel.setStatus(0);
+
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("userId", "sp10773p");
+        data.put("password", "1234");
+        data.put("nickName", "레이서");
+        data.put("email", "sp10773p@gmail.com");
+
+        list.add(data);
+
+        data = new HashMap<>();
+        data.put("userId", "tjdehd80");
+        data.put("password", "1234");
+        data.put("nickName", "성동훈");
+        data.put("email", "seongdh@ucssystem.co.kr");
+
+        list.add(data);
+        ajaxModel.setDataList(list);
+
+        return ajaxModel;
+    }
+
+    @RequestMapping(value = "/sample/deplucateUser")
+    public AjaxModel deplucateUser(@RequestBody AjaxModel params){
+        logger.debug("params : {}", params);
+        AjaxModel ajaxModel = new AjaxModel();
+
+        ajaxModel.setMsg("사용자 아이디를 사용할수 없습니다.");
+
+        return ajaxModel;
+    }
+
+    @RequestMapping(value = "/sample/tooManyData")
+    @ResponseBody
+    public AjaxModel tooManyData(HttpServletRequest request){
+        logger.debug("params : {}", request.getParameter("searchNickName"));
+        AjaxModel ajaxModel = new AjaxModel();
+
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(int i=0; i < 60000; i++) {
+            Map<String, Object> data = new HashMap<>();
+            data.put("userId", "user" + i);
+            data.put("password", "1234");
+            data.put("nickName", "성동훈");
+            data.put("email", "seongdh@ucssystem.co.kr");
+
+            list.add(data);
+        }
+
+        ajaxModel.setDataList(list);
+
+        return ajaxModel;
+    }
 
     @RequestMapping(value = "/sample/userData")
     public AjaxModel userData(HttpServletRequest request){

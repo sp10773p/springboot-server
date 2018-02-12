@@ -2,7 +2,7 @@
  * Created by sdh on 2018-02-09.
  */
 Ext.define('extjs.view.user.UserUpd', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.form.Panel',
     alias: 'widget.userupd',
     requires: [
         'Ext.button.Button',
@@ -28,7 +28,6 @@ Ext.define('extjs.view.user.UserUpd', {
         padding: 5,
         items: [{
             xtype: 'textfield',
-            name: 'userId',
             fieldLabel: '사용자 ID',
             labelAlign: 'right',
             bind: '{userId}'
@@ -47,17 +46,23 @@ Ext.define('extjs.view.user.UserUpd', {
             xtype: 'textfield',
             fieldLabel: '닉네임',
             labelAlign: 'right',
+            allowBlank: false,
+            name: 'nickName',
             bind: '{nickName}'
+
         },{
             xtype: 'textfield',
             fieldLabel: '패스워드',
             labelAlign: 'right',
             allowBlank: false,
+            name: 'password',
             bind: '{password}'
         },{
             xtype: 'textfield',
             fieldLabel: '이메일',
             labelAlign: 'right',
+            allowBlank: false,
+            name: 'email',
             bind: '{email}'
         }]
     }],
@@ -65,7 +70,6 @@ Ext.define('extjs.view.user.UserUpd', {
         text: '변경',
         formBind: true,
         disabled: true,
-        name: 'button1',
         handler: 'onUpdate'
     }]
 });
