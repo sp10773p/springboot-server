@@ -1,10 +1,12 @@
-Ext.define('extjs.controller.MemberController', {
+Ext.define('extjs.controller.MainController', {
     extend: 'Ext.app.Controller',
+
     config: {
         refs: {
             mainBar: 'main tabpanel[name=mainbar]'
         }
     },
+
     setMainBar: function (url, menuName) {
         var mainBar = this.getMainBar();
         var findTitle = false;

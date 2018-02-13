@@ -16,7 +16,8 @@ Ext.define('extjs.Application', {
     },
 
     controller: [
-        'MemberController'
+        'MainController',
+        'AjaxController'
     ],
 
     stores: [

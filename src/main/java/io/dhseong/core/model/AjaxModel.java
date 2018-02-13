@@ -17,8 +17,26 @@ public class AjaxModel {
     @Getter @Setter
     private List<Map<String, Object>> dataList;
 
+    /**
+     * 그리드 페이징 관련
+     */
+    @Getter @Setter
+    private int page = 0;
+
+    @Getter @Setter
+    private int pageRow = 0;
+
     @Getter @Setter
     private int total = 0;
+
+    /**
+     * 그리드 쿼리
+     */
+    @Getter @Setter
+    private String qKey  = "";
+
+    @Getter @Setter
+    private String summQKey  = "";
 
     @Getter @Setter
     private int status = 0;

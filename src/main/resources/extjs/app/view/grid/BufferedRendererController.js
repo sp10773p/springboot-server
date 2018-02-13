@@ -7,11 +7,16 @@ Ext.define('extjs.view.grid.BufferedRendererController', {
     onSearch: function (obj, selObj) {
         var me = this;
         var searchNickName = this.getViewModel().get('nickName');
-        this.getViewModel().getStore('userInfo').load({
-            params: {searchNickName: searchNickName},
-            callback: me.onGetUserInfo,
-            scope: me
-        });
+        var params = {
+            data: {
+                userId : 'testid',
+                searchNickName : searchNickName
+            }
+        };
+
+        var userInfoStore = this.getViewModel().getStore('userInfo');
+        var contr = extjs.app.getController('AjaxController');
+        contr.storeReader(userInfoStore, '/sample/tooManyData', params, me.onGetUserInfo, me);
     },
     onGetUserInfo: function (records, operation, success) {
         if(success == true) {

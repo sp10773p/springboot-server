@@ -5,11 +5,7 @@ Ext.define('extjs.view.main.Main',{
         'Ext.tab.Panel',
         'extjs.view.main.MainController',
         'extjs.view.main.MainModel',
-        'extjs.view.menu.LeftMenu',
-        'extjs.view.user.UserShow',
-        'extjs.view.user.UserReg',
-        'extjs.view.user.UserUpd',
-        'extjs.view.user.UserShowList'
+        'extjs.view.menu.LeftMenu'
     ],
     xtype: 'main',
     controller: 'main',

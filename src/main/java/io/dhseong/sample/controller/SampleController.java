@@ -158,8 +158,8 @@ public class SampleController {
 
     @RequestMapping(value = "/sample/tooManyData")
     @ResponseBody
-    public AjaxModel tooManyData(HttpServletRequest request){
-        logger.debug("params : {}", request.getParameter("searchNickName"));
+    public AjaxModel tooManyData(@RequestBody AjaxModel params){
+        logger.debug("params : {}", params);
         AjaxModel ajaxModel = new AjaxModel();
 
         List<Map<String, Object>> list = new ArrayList<>();

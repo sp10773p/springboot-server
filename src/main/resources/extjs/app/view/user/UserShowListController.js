@@ -25,7 +25,7 @@ Ext.define('extjs.view.user.UserShowListController', {
         }
     },
     onPageMoveUserShow: function (view, rowindex, colindex, item, event, record, row) {
-        var menucontroller = extjs.app.getController('MemberController');
+        var menucontroller = extjs.app.getController('MainController');
         menucontroller.movePage('extjs.view.user.UserShow', '사용자조회', {userId: record.data.userId});
     },
     /**

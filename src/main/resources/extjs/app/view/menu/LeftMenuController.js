@@ -12,7 +12,7 @@ Ext.define('extjs.view.menu.LeftMenuController', {
 
     },
     onMenuClick: function (obj, selObj) {
-        var memberController = extjs.app.getController('MemberController');
+        var memberController = extjs.app.getController('MainController');
         memberController.setMainBar(selObj.data.url, selObj.data.name);
     }
 });
